@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Scribble&display=swap" rel="stylesheet">
+<title>Emotion GIF</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    flex-direction: column;
+    background-color: black; /* Adding black background */
+    color: white; /* Set text color to white */
+    font-size: 40px; /* Set font size */
+    font-weight: bold; /* Set font weight */
+    font-family: 'Rubik Scribble', sans-serif; /* Set font family */
+  }
+  #hello-text {
+    letter-spacing: 8px;
+    margin-bottom: 10px; /* Add some bottom margin to separate from gif */
+  }
+  #robot-text {
+    font-size: 22px; /* Adjust font size for robot text */
+    margin-top: -10px; /* Adjust margin to bring it closer to AIARA text */
+  }
+  #gif-container {
+    margin-bottom: 20px;
+    position: relative; /* Set position to relative for 3D box */
+  }
+  #gif-container:before {
+    content: "";
+    position: absolute;
+    top: -10px; /* Adjust position */
+    left: -10px; /* Adjust position */
+    right: -10px; /* Adjust position */
+    bottom: -10px; /* Adjust position */
+    border: 3px solid #fff; /* Set border color */
+    border-radius: 20px; /* Adjust border radius */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Add box shadow */
+    z-index: -1; /* Set z-index to be below the GIF */
+  }
+  #text-box {
+    padding: 20px;
+    background-color: #000000; /* Set background color */
+    border-radius: 10px; /* Adjust border radius */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* Add box shadow */
+    text-align: center; /* Center text */
+    max-width: 700px; /* Limit width */
+    margin-top: 20px; /* Adjust margin top */
+    border: 3px solid white; /* Set border color */
+}
+</style>
+<script>
+  function displayGIF() {
+    var userInput = document.getElementById("emotion").value.toLowerCase();
+    var gifContainer = document.getElementById("gif-container");
+    var gifURL;
+    
+    if (userInput === "happy") {
+      gifURL = "https://fonts.gstatic.com/s/e/notoemoji/latest/1f604/512.gif";
+
+    } else if (userInput === "sad") {
+      gifURL = "https://fonts.gstatic.com/s/e/notoemoji/latest/1f61e/512.gif";
+    } else if (userInput === "hi") {
+      gifURL = "https://fonts.gstatic.com/s/e/notoemoji/latest/1f44b/512.gif";
+    } else if (userInput === "wow"){
+      gifURL = "https://fonts.gstatic.com/s/e/notoemoji/latest/1f60d/512.gif";
+    } else {
+      gifURL = "https://fonts.gstatic.com/s/e/notoemoji/latest/1f914/512.gif"; // Resting face GIF
+    }
+    
+    gifContainer.innerHTML = `
+      <img src="${gifURL}" alt="${userInput}" width="300" height="300">`;
+  }
+</script>
+</head>
+<body>
+  <div id="hello-text">A I A R A</div> <!-- Add hello text -->
+  <div id="robot-text">THE ROBOT</div> <!-- Add robot text -->
+  <div id="gif-container">
+    <picture>
+      <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f914/512.webp" type="image/webp">
+      <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f914/512.gif" alt="🤔" width="300" height="300">
+    </picture>
+  </div>
+  <input type="text" id="emotion" placeholder="Enter 'happy', 'sad', or 'hi'" oninput="displayGIF()">
+  <div id="text-box">
+    This is a colorful 3D text box under the face.
+  </div>
+</body>
+</html>
